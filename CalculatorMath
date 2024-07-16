@@ -4,3 +4,38 @@ import tkinter as tk
 from tkinter import messagebox
 import re
 from fractions import Fraction
+
+def calculate(n1,op,n2):
+
+    if op == "+":
+        result = n1 + n2
+    elif op == "-":
+        result = n1 - n2
+    elif op == "*":
+        result = n1 * n2
+    elif op == "/":
+        result = n1/n2
+    elif op == "^":
+        result = n1 ** n2
+        
+    return result
+
+def cont_calc():
+
+    yes_or_no = input('Continue? (y/n): ')
+    if yes_or_no == 'n':
+        return False
+    return True
+
+number1 = float(input('Enter first number: '))
+op = input('Enter operator (+,-,*,/,^): ')
+number2 = float(input('Enter second number: '))
+print(number1,op,number2)
+result = calculate(number1,op,number2)
+print('=',result)
+while cont_calc():
+    op = input('Enter operator (+,-,*,/,^): ')
+    number3 = float(input('Enter another number: '))
+    print(result,op,number3)
+    result = calculate(result,op,number3)
+    print('=',result)
